@@ -1,0 +1,15 @@
+<form method="POST" action="/login">
+<span class="input input--jiro">
+<input name="username" class="input__field input__field--jiro" type="text" id="input-10" />
+<label class="input__label input__label--jiro" for="input-10">
+<span class="input__label-content input__label-content--jiro">Username</span>
+</label>
+</span>
+<span class="input input--jiro">
+<input name="password" class="input__field input__field--jiro" type="password" id="input-11" />
+<label class="input__label input__label--jiro" for="input-11">
+<span class="input__label-content input__label-content--jiro">Password</span>
+</label>
+</span>
+<button type="submit">Go!</button>
+</form>

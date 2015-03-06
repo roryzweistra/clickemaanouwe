@@ -1,0 +1,14 @@
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/ArgProcessor.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Command.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Command/commands.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Command/help.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Command/version.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Plugin.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Setup.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Simple.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Subdispatch.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Subdispatch/DashedStyle.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Tester.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Tester/CaptureExternal.pm
+/Users/rory/Dev/Clickemaanouwe/local/lib/perl5/App/Cmd/Tutorial.pod
