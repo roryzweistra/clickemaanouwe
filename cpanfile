@@ -1,5 +1,6 @@
 requires "Dancer2" => "0.159002";
 requires "Dancer2::Session::Simple" => "0.141000"; 
+requires "Data::Printer" => "0";
 
 recommends "URL::Encode::XS"    => "0";
 recommends "CGI::Deurl::XS"     => "0";

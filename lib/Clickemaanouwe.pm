@@ -21,16 +21,25 @@ get '/login' => sub {
 post '/login' => sub {
     my $username    = params->{ 'username' };
     my $password    = params->{ 'password' };
-        
+
     if ( ( lc $username eq 'clicker' ) && ( $password eq 'Cl1ck1tY' ) ) {
         session 'authorised'    => 1;
     }
-    
+
     redirect '/';
 };
 
 post '/upload' => sub {
-    
+    use Data::Printer;
+    debug p params;
+    my $upload_dir  = 'clickemaanouwe/photos';
+
+    my $filename = params->{ 'file' };
+
+    debug 'file: ' . p $filename;
+    my @photos = request->upload( $filename );
+
+    debug p @photos;
 };
 
 true;
