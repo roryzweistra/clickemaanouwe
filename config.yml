@@ -26,5 +26,9 @@ engines:
     template_toolkit:
       start_tag: '<%'
       end_tag:   '%>'
+  session:
+    YAML:
+      session_dir: "tmp/sessions"
 
-session: "Simple"
+session: "YAML"
+

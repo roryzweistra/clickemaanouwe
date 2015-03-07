@@ -1,5 +1,7 @@
 package Clickemaanouwe;
 use Dancer2;
+use Image::Thumbnail;
+use Digest::MD5 'md5';
 
 our $VERSION = '0.1';
 
@@ -11,7 +13,12 @@ hook 'before' => sub {
 };
 
 get '/' => sub {
-    template 'index';
+    my $dirname = config->{ 'uploads_dir' } . '/thumbs';
+    opendir my($dh), $dirname or die "Couldn't open dir '$dirname': $!";
+    my @files = grep { !/^\./ } readdir $dh;
+    closedir $dh;
+
+    template 'index', { 'files' => \@files };
 };
 
 get '/login' => sub {
@@ -22,24 +29,57 @@ post '/login' => sub {
     my $username    = params->{ 'username' };
     my $password    = params->{ 'password' };
 
-    if ( ( lc $username eq 'clicker' ) && ( $password eq 'Cl1ck1tY' ) ) {
+    if ( ( $username eq config->{ 'username' } ) && ( $password eq config->{ 'password' } ) ) {
         session 'authorised'    => 1;
     }
 
     redirect '/';
 };
 
+get '/uploads/:file' => sub {
+    my $path = config->{ 'uploads_dir' } . '/' . param 'file';
+
+    return send_file ( $path, system_path => 1 );
+};
+
+get '/uploads/thumbs/:file' => sub {
+    my $path = config->{ 'uploads_dir' } . '/thumbs/' . param 'file';
+    return send_file( $path, system_path => 1 );
+};
+
 post '/upload' => sub {
-    use Data::Printer;
-    debug p params;
-    my $upload_dir  = 'clickemaanouwe/photos';
+    use Data::Dumper;
+    my $upload_dir  = config->{ 'uploads_dir' };
+    my $uploads     = request->uploads;
+    my @files;
 
-    my $filename = params->{ 'file' };
+    if ( ref( $uploads->{ 'file' } ) eq 'ARRAY' ) {
+        @files = @{ $uploads->{ 'file' } };
+    }
+    else {
+        push @files, $uploads->{ 'file' };
+    }
 
-    debug 'file: ' . p $filename;
-    my @photos = request->upload( $filename );
+    foreach my $file ( @files ) {
+        # Sanitize filename
+        my $filename    = lc $file->filename;
+        $filename       =~ s/\s/-/g;
+        $filename       = time . '-' . $filename;
+        # Save file.
+        my $path = $upload_dir . '/' . $filename;
+        $file->copy_to( $path );
 
-    debug p @photos;
+        # Create thumb
+        my $t = new Image::Thumbnail(
+            module     => "Image::Magick",
+            size       => 100,
+            create     => 1,
+            input      => $path,
+            outputpath => $upload_dir . '/thumbs/' . $filename,
+        );
+    }
+
+    return redirect '/';
 };
 
 true;

@@ -18,3 +18,9 @@ nytprof.out
 *.o
 *.bs
 .komodoproject
+/local/
+tmp/*
+uploads/thumbs/*
+.DS_Store
+cpanfile
+environments/

@@ -9,12 +9,35 @@
         <meta name="keywords" content="click, val thorens, xavier, dennis, yves, edward, andre, anton, martijn, rianne, arjan, marije, erick, kim, rory"/>
         <meta name="author" content="Rory Zweistra"/>
         <link rel="shortcut icon" href="favicon.ico">
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
         <link rel="stylesheet" href="/css/bootstrap-image-gallery.min.css">
+            <link rel="stylesheet" href="/css/clickemaanouwe.css">
 		<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
     </head>
     <body>
+        <div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/upload" method="POST" enctype="multipart/form-data">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Photo upload</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input class="file" type="file" name="file" multiple />
+                                <p class="help-block">You can choose multiple files at once.</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Uploaden</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
         <div id="blueimp-gallery" class="blueimp-gallery">
@@ -51,24 +74,16 @@
             </div>
         </div>
 
+        <a href="" id="camera-button" data-toggle="modal" data-target="#upload-modal">
+            <img src="/images/camera_icon.png" width="100">
+        </a>
+
         <div class="row-fluid">
             <header>
-                <img src="/images/header.png" class="img-responsive center-block" />
+                <img src="/images/header.png" class="img-responsive index-header" />
             </header>
 
-            <div class="main container">
-
-                <div class="upload-wrapper">
-                    <div class="upload">
-
-                        <h1>Photo Uploaden</h1>
-                        <form action="/upload" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="file" />
-                            <button type="submit">Uploaden</button>
-                        </form>
-                    </div>
-                </div>
-
+            <div class="main container content-container">
                 <% content %>
             </div><!--/main-->
 
@@ -77,8 +92,8 @@
             </footer>
         </div>
 
-
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
         <script src="/js/bootstrap-image-gallery.min.js"></script>
 

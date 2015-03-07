@@ -1,11 +1,7 @@
 <div id="links">
-    <a href="/images/banana.jpg" title="Banana" data-gallery>
-        <img src="/images/thumbnails/banana.jpg" alt="Banana">
+    <% FOREACH file IN files %>
+    <a href="/uploads/<% file %>" title="<% file %>" data-gallery>
+        <img src="/uploads/thumbs/<% file %>" alt="<% file %>">
     </a>
-    <a href="/images/apple.jpg" title="Apple" data-gallery>
-        <img src="/images/thumbnails/apple.jpg" alt="Apple">
-    </a>
-    <a href="/images/orange.jpg" title="Orange" data-gallery>
-        <img src="/images/thumbnails/orange.jpg" alt="Orange">
-    </a>
+    <% END %>
 </div>
