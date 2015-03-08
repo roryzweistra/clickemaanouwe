@@ -1,6 +1,6 @@
 <div id="links">
     <% FOREACH file IN files %>
-    <a href="/uploads/<% file %>" title="<% file %>" data-gallery>
+    <a href="/uploads/<% file %>" title="<% file %>" data-gallery onclick="_gaq.push(['_trackEvent', 'photo <% file %>', 'clicked'])">
         <img src="/uploads/thumbs/<% file %>" alt="<% file %>">
     </a>
     <% END %>

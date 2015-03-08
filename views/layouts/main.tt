@@ -14,8 +14,19 @@
         <link rel="stylesheet" href="/css/bootstrap-image-gallery.min.css">
             <link rel="stylesheet" href="/css/clickemaanouwe.css">
 		<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
-    </head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-31132639-10', 'auto');
+  ga('send', 'pageview');
+
+</script>
+   </head>
     <body>
+	<% IF session.authorised %>
         <div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -32,12 +43,13 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Uploaden</button>
+                            <button type="submit" class="btn btn-primary">Uploaden</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+	<% END %>
 
         <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
         <div id="blueimp-gallery" class="blueimp-gallery">
@@ -74,9 +86,11 @@
             </div>
         </div>
 
-        <a href="" id="camera-button" data-toggle="modal" data-target="#upload-modal">
+	<% IF session.authorised %>
+        <a href="" id="camera-button" data-toggle="modal" data-target="#upload-modal" onclick="_gaq.push(['_trackEvent', 'upload photo', 'clicked'])">
             <img src="/images/camera_icon.png" width="100">
         </a>
+	<% END %>
 
         <div class="row-fluid">
             <header>

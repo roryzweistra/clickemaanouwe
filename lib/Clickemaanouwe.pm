@@ -71,7 +71,7 @@ post '/upload' => sub {
 
         # Create thumb
         my $t = new Image::Thumbnail(
-            module     => "Image::Magick",
+            module     => "Imager",
             size       => 100,
             create     => 1,
             input      => $path,

@@ -1,7 +1,7 @@
 requires "Dancer2" => "0.159002";
 requires "Dancer2::Session::YAML" => "0.159002";
 requires "Data::Printer" => "0";
-requires "Image::Magick" => "0";
+requires "Imager" => "0";
 requires "Image::Thumbnail" => "0.65";
 requires "Starman" => "0";
 
